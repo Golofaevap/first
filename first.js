@@ -1,5 +1,5 @@
-const browser = require("./pptFunctions/getBrowser");
-const newPage = require("./pptFunctions/newPage");
+const browser = require("./pptFunctions/getBrowser"); // Golofaeva.xs4n
+const newPage = require("./pptFunctions/newPage"); // Golofaeva-p45s
 async function main() {
   const opts = {
     headless: false,
@@ -13,3 +13,4 @@ async function main() {
 }
 
 main();
+// varfolomeytrimiraderybkin@yandex.ru
