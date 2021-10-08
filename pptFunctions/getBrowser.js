@@ -13,7 +13,7 @@ async function getBrowser(opts) {
             userDataDir: opts.userDataDirPath,
             ignoreDefaultArgs: ["--disable-extensions", "--enable-automation"],
             args: [
-                // `--proxy-server=${proxy}`,
+                // `--proxy-server=socks5://127.0.0.1:5033`,
                 "--no-sandbox",
                 "--disable-setuid-sandbox",
                 `--start-maximized`,

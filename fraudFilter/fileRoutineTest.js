@@ -15,22 +15,14 @@ for (var i = 0; i < files.length; i++) {
     const file = files[i];
     // console.log(file);
 
-    if (file.includes(".zip") || file.includes(".json")) {
-        const folderPath = file.split(".zip")[0].split(".json")[0];
-        const fullFilePath = path.join(rootFolder, file);
-        const fullFolderPath = path.join(rootFolder, folderPath, file);
-        console.log(fullFilePath, fullFolderPath);
-        fs.renameSync(fullFilePath, fullFolderPath);
+    if (file.includes(".json")) {
+        console.log(file);
     }
 
-    // var filename = path.join(rootFolder, files[i]);
-    // var stat = fs.lstatSync(filename);
-    // if (stat.isDirectory()) {
-    //     fromDir(filename, filter); //recurse
-    // } else if (filename.indexOf(filter) >= 0) {
-    //     console.log("-- found: ", filename);
-    // }
+   
 }
+
+return;
 const folders = fs.readdirSync(rootFolder).filter(function (folder) {
     const isDir = fs.statSync(rootFolder + "/" + folder).isDirectory();
     // console.log(isDir);
